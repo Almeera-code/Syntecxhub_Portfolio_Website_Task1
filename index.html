@@ -1,385 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Almeera Butt | Portfolio</title>
 
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
+    :root {
+      --primary: #38bdf8;
+      --secondary: #6366f1;
+      --accent: #ec4899;
+      --bg-dark: #020617;
+      --bg-slate: #0f172a;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: blur(12px);
     }
 
-    body{
-      background:radial-gradient(circle at top,#0f172a,#020617);
-      color:#e5e7eb;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary), var(--secondary));
+      border-radius: 10px;
     }
 
     /* Animated Background */
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:radial-gradient(circle at 20% 20%,rgba(56,189,248,0.15),transparent 40%),
-                 radial-gradient(circle at 80% 30%,rgba(99,102,241,0.15),transparent 40%),
-                 radial-gradient(circle at 50% 80%,rgba(236,72,153,0.12),transparent 40%);
-      z-index:-1;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05), transparent 40%);
+      z-index: -1;
     }
 
     /* Navbar */
-    nav{
-      position:fixed;
-      top:0;
-      width:100%;
-      background:rgba(2,6,23,0.65);
-      backdrop-filter:blur(12px);
-      padding:1rem 3rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:1000;
-      border-bottom:1px solid rgba(255,255,255,0.06);
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: var(--glass-blur);
+      padding: 1.2rem 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid var(--glass-border);
+      transition: 0.4s;
     }
 
-    nav h2{
-      color:#38bdf8;
-      font-weight:600;
-      letter-spacing:1px;
+    nav.scrolled {
+      padding: 0.8rem 10%;
+      background: rgba(2, 6, 23, 0.9);
     }
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:2rem;
+    nav h2 {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
     }
 
-    nav ul li a{
-      color:#e5e7eb;
-      text-decoration:none;
-      font-size:0.95rem;
-      position:relative;
-      transition:0.3s;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
 
-    nav ul li a::after{
-      content:'';
-      position:absolute;
-      left:50%;
-      bottom:-8px;
-      width:0;
-      height:2px;
-      background:linear-gradient(90deg,#38bdf8,#6366f1);
-      transition:0.3s;
-      transform:translateX(-50%);
+    nav ul li a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      position: relative;
+      transition: 0.3s;
     }
 
-    nav ul li a:hover{
-      color:#38bdf8;
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      transition: 0.3s;
+      transform: translateX(-50%);
     }
 
-    nav ul li a:hover::after{
-      width:100%;
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     /* Hero */
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:2rem;
-      text-align:center;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
     }
 
-    .hero h1{
-      font-size:3.3rem;
-      font-weight:700;
-      background:linear-gradient(90deg,#f8fafc,#38bdf8,#818cf8);
-      background-size:200%;
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:textGlow 6s infinite linear;
+    .hero-content {
+      max-width: 900px;
+      z-index: 10;
     }
 
-    @keyframes textGlow{
-      0%{background-position:0%}
-      100%{background-position:200%}
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #fff, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 5s linear infinite;
     }
 
-    .hero p{
-      margin:1.2rem auto;
-      max-width:620px;
-      color:#cbd5f5;
-      font-size:1.05rem;
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
     }
 
-    .hero-buttons{
-      margin-top:2rem;
-      display:flex;
-      gap:1rem;
-      justify-content:center;
-      flex-wrap:wrap;
+    .hero .typed-text {
+      color: var(--primary);
     }
 
-    .btn{
-      padding:0.75rem 1.8rem;
-      border-radius:40px;
-      font-weight:500;
-      text-decoration:none;
-      transition:0.35s;
-      cursor:pointer;
+    .hero p {
+      margin: 1.5rem auto;
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
     }
 
-    .btn-primary{
-      background:linear-gradient(135deg,#38bdf8,#6366f1);
-      color:#020617;
-      box-shadow:0 12px 30px rgba(56,189,248,0.35);
-      border:none;
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .btn-primary:hover{
-      transform:translateY(-5px) scale(1.02);
+    .btn {
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.35s;
+      cursor: pointer;
     }
 
-    .btn-outline{
-      border:1px solid #38bdf8;
-      color:#38bdf8;
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #020617;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.35);
+      border: none;
     }
 
-    .btn-outline:hover{
-      background:#38bdf8;
-      color:#020617;
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .btn-outline {
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+    }
+
+    .btn-outline:hover {
+      background: #38bdf8;
+      color: #020617;
     }
 
     /* Sections */
-    section{
-      padding:6rem 8%;
-      position:relative;
+    section {
+      padding: 8rem 10%;
+      position: relative;
     }
 
-    h2{
-      text-align:center;
-      font-size:2.3rem;
-      margin-bottom:3.5rem;
-      background:linear-gradient(90deg,#f8fafc,#38bdf8);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #fff, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-title .underline {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      margin: 0.5rem auto 0;
+      border-radius: 10px;
     }
 
     /* About */
-    .about-card{
-      max-width:800px;
-      margin:auto;
-      padding:3rem;
-      background:rgba(2,6,23,0.75);
-      backdrop-filter:blur(16px);
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,0.08);
-      text-align:center;
+    .about-card {
+      max-width: 900px;
+      margin: auto;
+      padding: 4rem;
+      background: var(--glass);
+      backdrop-filter: var(--glass-blur);
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      text-align: center;
+      transition: 0.4s;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
-    .about-card p{
-      color:#cbd5f5;
-      font-size:1.05rem;
+    .about-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(56, 189, 248, 0.1);
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     /* Skills */
-    .skills-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:2rem;
-      max-width:1000px;
-      margin:auto;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    .skill-box{
-      background:rgba(2,6,23,0.75);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:20px;
-      padding:2rem 1.5rem;
-      text-align:center;
-      backdrop-filter:blur(16px);
-      transition:0.4s;
+    .skill-box {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      text-align: center;
+      backdrop-filter: var(--glass-blur);
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .skill-box i{
-      color:#38bdf8;
-      margin-bottom:1rem;
+    .skill-box i {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
     }
 
-    .skill-box h3{
-      color:#38bdf8;
-      margin-bottom:0.6rem;
-      font-size:1.2rem;
+    .skill-box h3 {
+      color: #fff;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
     }
 
-    .skill-box p{
-      color:#cbd5f5;
-      font-size:0.95rem;
+    .skill-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
-    .skill-box:hover{
-      transform:translateY(-8px);
-      box-shadow:0 20px 40px rgba(56,189,248,0.3);
+    .skill-box:hover {
+      transform: translateY(-12px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
     }
 
     /* Projects */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:2.5rem;
-      max-width:1000px;
-      margin:auto;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    .project{
-      position:relative;
-      background:rgba(2,6,23,0.75);
-      backdrop-filter:blur(16px);
-      padding:2.5rem;
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,0.08);
-      transition:0.4s;
-      text-align:center;
+    .project {
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: var(--glass-blur);
+      padding: 3rem;
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      transition: 0.4s;
+      overflow: hidden;
     }
 
-    .project h3{
-      color:#38bdf8;
-      margin-bottom:0.8rem;
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: 0.4s;
     }
 
-    .project p{
-      color:#cbd5f5;
-      font-size:0.95rem;
-      margin-bottom:1.5rem;
+    .project h3 {
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
 
-    .project-links{
-      display:flex;
-      gap:1rem;
-      flex-wrap:wrap;
-      justify-content:center;
+    .project p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
     }
 
-    .project-links .btn-outline{
-      padding:0.5rem 1.2rem;
-      font-size:0.9rem;
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .project:hover{
-      transform:translateY(-10px);
-      box-shadow:0 25px 50px rgba(56,189,248,0.3);
-      border:1px solid rgba(56,189,248,0.4);
+    .project-links .btn-outline {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      border-radius: 12px;
+    }
+
+    .project:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 60px rgba(56, 189, 248, 0.15);
+      border-color: var(--primary);
+    }
+
+    .project:hover::before {
+      opacity: 1;
     }
 
     /* Contact Form */
-    .contact-box{
-      max-width:620px;
-      margin:auto;
-      padding:3.5rem;
-      background:rgba(2,6,23,0.8);
-      backdrop-filter:blur(18px);
-      border-radius:30px;
-      border:1px solid rgba(255,255,255,0.08);
-      text-align:center;
+    .contact-container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      background: var(--glass);
+      backdrop-filter: var(--glass-blur);
+      border-radius: 40px;
+      border: 1px solid var(--glass-border);
+      padding: 4rem;
     }
 
-    .contact-box p{
-      color:#cbd5f5;
-      margin-bottom:1.2rem;
+    .contact-info {
+      text-align: left;
     }
 
-    .contact-form{
-      margin-top:1.5rem;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #fff;
     }
 
-    .form-group{
-      display:flex;
-      align-items:center;
-      gap:0.8rem;
-      padding:0.9rem 1rem;
-      border-radius:14px;
-      background:rgba(2,6,23,0.8);
-      border:1px solid rgba(255,255,255,0.08);
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
     }
 
-    .form-group i{
-      color:#38bdf8;
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+    }
+
+    .contact-item i {
+      width: 45px;
+      height: 45px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .contact-box {
+      width: 100%;
+    }
+
+    .contact-box p {
+      color: #cbd5f5;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      transition: 0.3s;
+    }
+
+    .form-group:focus-within {
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-group i {
+      color: var(--primary);
+      font-size: 1.1rem;
     }
 
     .form-group input,
-    .form-group textarea{
-      width:100%;
-      background:transparent;
-      border:none;
-      outline:none;
-      color:#e5e7eb;
-      font-size:0.95rem;
+    .form-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
-    .form-group.message{
-      align-items:flex-start;
+    .form-group.message {
+      align-items: flex-start;
     }
 
-    .form-group.message i{
-      margin-top:0.4rem;
+    .form-group.message i {
+      margin-top: 0.4rem;
     }
 
-    textarea{
-      resize:none;
+    textarea {
+      resize: none;
+      height: 120px;
     }
 
-    .contact-form button{
-      align-self:center;
-      padding:0.75rem 1.8rem;
-      border-radius:40px;
-      background:linear-gradient(135deg,#38bdf8,#6366f1);
-      color:#020617;
-      font-weight:500;
-      border:none;
-      cursor:pointer;
-      transition:0.35s;
+    .contact-form button {
+      padding: 1rem 2.5rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.4s;
+      font-size: 1.1rem;
     }
 
-    .contact-form button:hover{
-      transform:translateY(-4px);
-      box-shadow:0 15px 30px rgba(56,189,248,0.35);
+    .contact-form button:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4);
     }
 
-    footer{
-      text-align:center;
-      padding:2rem;
-      color:#94a3b8;
-      border-top:1px solid rgba(255,255,255,0.08);
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+      background: var(--bg-dark);
     }
 
     /* Responsive */
-    @media(max-width:768px){
-      nav{padding:1rem 1.5rem;}
-      .hero h1{font-size:2.5rem;}
-      section{padding:5rem 6%;}
+    .mobile-menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media(max-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        padding: 3rem;
+        gap: 3rem;
+      }
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        padding: 1rem 5%;
+      }
+
+      .mobile-menu-icon {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        border-left: 1px solid var(--glass-border);
+        z-index: 1000;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+
+      nav ul li a {
+        font-size: 1.2rem;
+      }
+
+      section {
+        padding: 5rem 6%;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+      }
+
+      .about-card {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .contact-container {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 480px) {
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
-<body>
 
-<nav>
-  <h2>Almeera</h2>
-  <ul>
+<nav id="navbar">
+  <h2 data-aos="fade-right">Almeera</h2>
+  <div id="mobile-menu-btn" class="mobile-menu-icon" data-aos="fade-left">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul id="nav-links">
+    <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -387,10 +632,11 @@
   </ul>
 </nav>
 
-<section class="hero">
-  <div>
-    <h1>Hi, I'm Almeera</h1>
-    <p>Frontend Developer crafting modern, attractive, and responsive web experiences.</p>
+<section class="hero" id="home">
+  <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
+    <h1>Hi, I'm <span class="typed-text"></span></h1>
+    <p>A Frontend Developer passionate about crafting modern, attractive, and highly responsive web experiences that
+      leave a lasting impression.</p>
     <div class="hero-buttons">
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="#contact" class="btn btn-outline">Contact Me</a>
@@ -399,86 +645,229 @@
 </section>
 
 <section id="about">
-  <h2>About Me</h2>
-  <div class="about-card">
-    <p>I am a passionate Frontend Developer focused on building elegant, modern, and user-centric interfaces using HTML and CSS. I enjoy polishing UI details and enhancing user experience.</p>
+  <div class="section-title" data-aos="fade-up">
+    <h2>About Me</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+    <p>I am a passionate Frontend Developer focused on building elegant, modern, and user-centric interfaces using
+      HTML, CSS and JavaScript. I enjoy polishing UI details and enhancing user experience. My goal is to bridge the gap
+      between
+      design and technology to create seamless digital products.</p>
   </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
+  <div class="section-title" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="underline"></div>
+  </div>
   <div class="skills-grid">
-    <div class="skill-box">
-      <i class="fas fa-code fa-2x"></i>
+    <div class="skill-box" data-aos="flip-left" data-aos-delay="100">
+      <i class="fas fa-code"></i>
       <h3>Frontend</h3>
-      <p>HTML5, CSS3, Responsive Design</p>
+      <p>HTML5, CSS3, JavaScript, Responsive Design</p>
     </div>
-    <div class="skill-box">
-      <i class="fas fa-paint-brush fa-2x"></i>
+    <div class="skill-box" data-aos="flip-left" data-aos-delay="200">
+      <i class="fas fa-paint-brush"></i>
       <h3>UI / UX Design</h3>
-      <p>Modern Layouts, Color Theory, Typography</p>
+      <p>Modern Layouts, Glassmorphism, Color Theory</p>
     </div>
-    <div class="skill-box">
-      <i class="fab fa-github fa-2x"></i>
+    <div class="skill-box" data-aos="flip-left" data-aos-delay="300">
+      <i class="fab fa-github"></i>
       <h3>Tools</h3>
-      <p>Git, GitHub, VS Code</p>
+      <p>Git, GitHub, VS Code, Chrome DevTools</p>
     </div>
-    <div class="skill-box">
-      <i class="fas fa-mobile-alt fa-2x"></i>
+    <div class="skill-box" data-aos="flip-left" data-aos-delay="400">
+      <i class="fas fa-mobile-alt"></i>
       <h3>Responsive</h3>
-      <p>Mobile & Desktop Friendly Interfaces</p>
+      <p>Seamless Mobile & Desktop Friendly Interfaces</p>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <div class="section-title" data-aos="fade-up">
+    <h2>Featured Projects</h2>
+    <div class="underline"></div>
+  </div>
   <div class="projects-grid">
-    <div class="project">
-      <h3>E-commerce Web Design</h3>
-      <p>Desktop-based e-commerce interface designed during a frontend development internship. Clean UI, modern layout, and responsive design.</p>
+    <div class="project" data-aos="fade-up" data-aos-delay="100">
+      <h3>E-commerce Website</h3>
+      <p>A high-end desktop-based e-commerce interface designed during a frontend development internship. Features a
+        clean UI, modern layout, and fully responsive design.</p>
       <div class="project-links">
-        <a href="https://almeera-code.github.io/Developers-Hub.co_Frontend-Development-Task_E-commerce-Web-design/" target="_blank" class="btn btn-outline">View Live</a>
-        <a href="#" class="btn btn-outline">Source Code</a>
+        <a href=" https://almeera-code.github.io/Developers-Hub.co_Frontend-Development-Task_E-commerce-Web-design/"
+          target="_blank" class="btn btn-outline">View Live</a>
+        <a href="https://github.com/Almeera-code/Developers-Hub.co_Frontend-Development-Task_E-commerce-Web-design" target="_blank" class="btn btn-outline">Source Code</a>
       </div>
     </div>
-    <div class="project">
+    <div class="project" data-aos="fade-up" data-aos-delay="200">
       <h3>Portfolio Website</h3>
-      <p>Modern single-page responsive portfolio built using HTML and CSS. Designed with clean layouts and hover animations.</p>
+      <p>My personal portfolio, a modern single-page responsive website built with pure HTML and CSS. Showcasing
+        advanced animations and a premium glassmorphic feel.</p>
       <div class="project-links">
         <a href="#" class="btn btn-outline">View Live</a>
         <a href="#" class="btn btn-outline">Source Code</a>
+      </div>
+    </div>
+    <div class="project" data-aos="fade-up" data-aos-delay="300">
+      <h3>Nexus</h3>
+      <p>An innovative collaboration platform connecting investors and entrepreneurs. Designed with a focus on seamless
+        networking and opportunity discovery.</p>
+      <div class="project-links">
+        <a href="https://nexus-f59vmkes1-almeeras-projects-24faed3b.vercel.app" target="_blank" class="btn btn-outline">View Live</a>
+        <a href="https://github.com/Almeera-code/Nexus" target="_blank" class="btn btn-outline">Source Code</a>
+      </div>
+    </div>
+    <div class="project" data-aos="fade-up" data-aos-delay="400">
+      <h3>To-Do-List App</h3>
+      <p>A simple and efficient task management application built with modern web technologies. Helps users organize
+        their daily tasks with ease.</p>
+      <div class="project-links">
+        <a href=" https://almeera-code.github.io/Syntecxhub_To_Do_List_App_Task2/" target="_blank" class="btn btn-outline">View Live</a>
+        <a href="https://github.com/Almeera-code/Syntecxhub_To_Do_List_App_Task2" target="_blank" class="btn btn-outline">Source Code</a>
+      </div>
+    </div>
+    <div class="project" data-aos="fade-up" data-aos-delay="500">
+      <h3>Quiz App</h3>
+      <p>An interactive quiz application featuring multiple categories and real-time score tracking. Designed for an
+        engaging learning experience.</p>
+      <div class="project-links">
+        <a href="https://almeera-code.github.io/Syntecxhub_Quiz_App_Task3/" target="_blank" class="btn btn-outline">View Live</a>
+        <a href="https://github.com/Almeera-code/Syntecxhub_Quiz_App_Task3" target="_blank" class="btn btn-outline">Source Code</a>
       </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact Me</h2>
-  <div class="contact-box">
-    <p>Interested in working together? Drop me a message and let's create something amazing!</p>
+  <div class="section-title" data-aos="fade-up">
+    <h2>Get In Touch</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="contact-container" data-aos="zoom-in">
+    <div class="contact-info">
+      <h3>Let's Talk</h3>
+      <p>Interested in working together or just want to say hi? My inbox is always open!</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>almeerabutt31@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>Sialkot, Pakistan</span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <span>linkedin.com/in/Almeera Butt</span>
+        </div>
+      </div>
+    </div>
 
-    <form class="contact-form">
-      <div class="form-group">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Your Name" required>
-      </div>
-      <div class="form-group">
-        <i class="fas fa-envelope"></i>
-        <input type="email" placeholder="Your Email" required>
-      </div>
-      <div class="form-group message">
-        <i class="fas fa-message"></i>
-        <input type="text" placeholder="Hi, I'm Almeera. Your Message..." required>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
+    <div class="contact-box">
+      <form class="contact-form">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group message">
+          <i class="fas fa-message"></i>
+          <textarea placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+      </form>
+    </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Almeera Butt • Frontend Developer
+  <p>© 2026 Almeera Butt • Crafted with Passion • Frontend Developer</p>
 </footer>
 
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<!-- Typed.js -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    offset: 100,
+    once: true,
+  });
+
+  // Initialize Typed.js
+  var typed = new Typed('.typed-text', {
+    strings: ['Almeera', 'a Web Designer', 'a Frontend Developer'],
+    typeSpeed: 70,
+    backSpeed: 50,
+    loop: true
+  });
+
+  // Navbar Scroll Effect
+  window.addEventListener('scroll', function () {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const navLinks = document.getElementById('nav-links');
+  const mobileIcon = mobileMenuBtn.querySelector('i');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileIcon.classList.toggle('fa-bars');
+    mobileIcon.classList.toggle('fa-xmark');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      mobileIcon.classList.add('fa-bars');
+      mobileIcon.classList.remove('fa-xmark');
+    });
+  });
+
+  // Navbar Scroll Effect
+  window.addEventListener('scroll', function () {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href;
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+</script>
 </body>
+
 </html>
